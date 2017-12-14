@@ -32,6 +32,7 @@ export default class Calendar extends Component {
   };
 
   static propTypes = {
+    highlightedDays: PropTypes.array,
     currentMonth: PropTypes.any,
     customStyle: PropTypes.object,
     dayHeadings: PropTypes.array,
@@ -79,6 +80,7 @@ export default class Calendar extends Component {
     startDate: moment().format('YYYY-MM-DD'),
     titleFormat: 'MMMM YYYY',
     weekStart: 1,
+    selectedDays: [],
     calendarFormat: 'monthly' // weekly or monthly
   };
 
