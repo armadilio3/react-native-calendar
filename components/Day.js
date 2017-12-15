@@ -77,7 +77,7 @@ export default class Day extends Component {
       dayButtonStyle = [styles.dayButton, customStyle.dayButton];
     } else {
       dayWidth = Dimensions.get('window').width / 7;
-      dayButtonStyle = [styles.dayButton, customStyle.dayButton, {width: dayWidth}];
+      dayButtonStyle = [styles.dayButton, customStyle.dayButton, { width: dayWidth }];
     }
 
     if (isWeekend) {
@@ -102,9 +102,8 @@ export default class Day extends Component {
       dayButtonFillerStyle = [styles.dayButtonFiller, customStyle.dayButtonFiller];
     } else {
       dayWidth = Dimensions.get('window').width / 7;
-      dayButtonFillerStyle = [styles.dayButtonFiller, customStyle.dayButtonFiller, {width: dayWidth}];
+      dayButtonFillerStyle = [styles.dayButtonFiller, customStyle.dayButtonFiller, { width: dayWidth }];
     }
-
     return filler
       ? (
         <TouchableWithoutFeedback>
@@ -120,16 +119,18 @@ export default class Day extends Component {
         >
           <View style={this.dayButtonStyle(isWeekend, isSelected, isToday, event)}>
             <View style={this.dayCircleStyle(isWeekend, isSelected, isToday, event)}>
-              <Text style={this.dayTextStyle(isWeekend, isSelected, isToday, event)}>{caption}</Text>
+              <Text style={[
+                this.dayTextStyle(isWeekend, isSelected, isToday, event),
+                event !== undefined ? customStyle.eventIndicatorText : null]}>{caption}</Text>
             </View>
             {showEventIndicators &&
-            <View style={[
-              styles.eventIndicatorFiller,
-              customStyle.eventIndicatorFiller,
-              event && styles.eventIndicator,
-              event && customStyle.eventIndicator,
-              event && event.eventIndicator]}
-            />
+              <View style={[
+                styles.eventIndicatorFiller,
+                customStyle.eventIndicatorFiller,
+                event && styles.eventIndicator,
+                event && customStyle.eventIndicator,
+                event && event.eventIndicator]}
+              />
             }
           </View>
         </TouchableOpacity>
